@@ -2,14 +2,14 @@ package mx.supercarrito.scandroid
 
 import org.jetbrains.anko.*
 import android.os.Bundle
-import android.app.Activity
 import android.content.Intent
+import android.support.v7.app.AppCompatActivity
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import mx.supercarrito.scandroid.CarritoService.*
 import retrofit.Retrofit
 
-class MainActivity : Activity() {
+class MainActivity : AppCompatActivity() {
     private val retrofit : Retrofit = Retrofit.Builder()
             .baseUrl("http://10.49.86.154")
             .build();
@@ -30,8 +30,14 @@ class MainActivity : Activity() {
     }
 
     private fun pairCarrito() {
-        val pairer : IntentIntegrator = IntentIntegrator(this)
-        pairer.initiateScan()
+        try {
+            val pairer : IntentIntegrator = IntentIntegrator()
+            pairer.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE_TYPES);
+            pairer.setPrompt("Escanea el código QR del carrito");
+            pairer.initiateScan()
+        } catch (ex: Exception) {
+            println(ex.toString())
+        }
     }
 
     override public fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
