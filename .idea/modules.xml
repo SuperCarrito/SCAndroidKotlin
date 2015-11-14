@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file:///run/media/fabianhjr/Data/Development/Projects/Github/SCAndroid2/SCAndroid2.iml" filepath="/run/media/fabianhjr/Data/Development/Projects/Github/SCAndroid2/SCAndroid2.iml" />
-      <module fileurl="file:///run/media/fabianhjr/Data/Development/Projects/Github/SCAndroid2/app/app.iml" filepath="/run/media/fabianhjr/Data/Development/Projects/Github/SCAndroid2/app/app.iml" />
+      <module fileurl="file:///run/media/fabianhjr/Data/Development/Projects/Github/SCAndroidKotlin/SCAndroidKotlin.iml" filepath="/run/media/fabianhjr/Data/Development/Projects/Github/SCAndroidKotlin/SCAndroidKotlin.iml" />
+      <module fileurl="file:///run/media/fabianhjr/Data/Development/Projects/Github/SCAndroidKotlin/app/app.iml" filepath="/run/media/fabianhjr/Data/Development/Projects/Github/SCAndroidKotlin/app/app.iml" />
     </modules>
   </component>
 </project>
