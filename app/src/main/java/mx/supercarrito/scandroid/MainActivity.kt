@@ -10,6 +10,11 @@ import mx.supercarrito.scandroid.CarritoService.*
 import retrofit.Retrofit
 
 class MainActivity : Activity() {
+    private val retrofit : Retrofit = Retrofit.Builder()
+            .baseUrl("http://10.49.86.154")
+            .build();
+    private val service : CarritoService.CarritoInterface = retrofit.create(CarritoService.CarritoInterface::class.java)
+    private var carrito : Carrito? = null;
 
     override protected fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,11 +36,11 @@ class MainActivity : Activity() {
 
     override public fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
         val scanResult : IntentResult? = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-        if(scanResult != null) {
-            val retrofit : Retrofit = Retrofit.Builder()
-                    .baseUrl("http://10.49.86.154")
-                    .build();
-            val service : CarritoService = retrofit.create(CarritoService.CarritoInterface.class)
+        val content : String? = scanResult?.contents
+        if(content != null) {
+            val response = service.getCarrito(content).execute()
+            carrito = response.body()
+            print(carrito.toString())
         }
     }
 }
